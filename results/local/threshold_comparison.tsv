@@ -1,0 +1,13 @@
+statistic	top_percent	genomewide_cutoff	genomewide_eligible	local_windows	local_100kb_bins
+Fst_Cpo_Cyu	1	0.127607	52494	7	5
+Fst_Cpo_Cyu	2.5	0.1086	52494	11	9
+Fst_Cpo_Cyu	5	0.095	52494	28	22
+Mean_fst_sym	1	0.2247384	55137	5	5
+Mean_fst_sym	2.5	0.204232	55137	12	11
+Mean_fst_sym	5	0.188	55137	28	25
+species_trio_fd_recomputed	1	0.508830225	49667	22	18
+species_trio_fd_recomputed	2.5	0.41587255	49667	63	40
+species_trio_fd_recomputed	5	0.3470076875	49667	123	71
+Mean_f_d_sym_2026	1	0.2825333	50526	25	18
+Mean_f_d_sym_2026	2.5	0.223395480357143	50526	65	41
+Mean_f_d_sym_2026	5	0.184058542410714	50526	122	61

@@ -16,9 +16,9 @@ Convert the final fourfold-degenerate, thin500 VCF with `convert_vcf_to_nexus.rb
 
 ## Genomic windows
 
-`scripts/dsuite.sh` is a parameterized template for [Dsuite](https://github.com/millanek/Dsuite) using author-confirmed `-w 50,25`. It needs an external VCF, SETS, rooted tree and trios; names must agree and outgroups must be coded as required by Dsuite. The bundled species trio is illustrative of the confirmed Cma/Cyu/Cpo ordering.
+`scripts/dsuite.sh` is a parameterized template for [Dsuite](https://github.com/millanek/Dsuite) using author-confirmed `-w 50,25`. It needs an external VCF, SETS, rooted tree and trios; names must agree and outgroups must be coded as required by Dsuite. The final species configurations are MY1–CYU–CPO and CY32–CPO–CYU; their separate SETS/trio files are bundled in `data/introgression/`. `species_dinvestigate.sh` runs these two local-window configurations without requiring a tree or a new Dtrios/Fbranch run.
 
-The compact 10-kb table retains diversity, differentiation, divergence, XP-CLR and fd. Original full-genotype inputs and exact popgenWindows/XP-CLR commands remain external. Existing fd values were not recalculated; the species filename/confirmed-setting difference is documented in METHODS.md.
+The compact 10-kb table retains diversity, differentiation, divergence, XP-CLR and fd. Original full-genotype inputs and exact popgenWindows/XP-CLR commands remain external. Species-reference fd summaries have been recalculated from the two supplied 50/25 outputs; sympatric fd is unchanged. See [added analysis instructions](SPECIES_FD_UPDATE.md) for start-position assignment, filtering, configuration averaging, Table S9 and reference sensitivity.
 
 `Rscript scripts/window_features.R` runs the retained threshold/coverage/NBS and GO/KEGG calculations, omitting only an unnecessary comparison to an older run. Dependencies: data.table, R.utils, clusterProfiler, ggplot2. Plot with `plot_window_features.R` or `plot_genomic_landscapes.R`. Putative NBS IDs are annotation outputs; source BLAST/UniProt inputs are external.
 
@@ -52,4 +52,4 @@ Run `Rscript scripts/mantel.R` before `Rscript scripts/mmrr.R`. They use the ret
 
 ## Checks
 
-The curation checks syntax, sample/data consistency and short numerical summaries. Full genomic scans, demographic fitting and long bootstrap/permutation analyses were not rerun. Software versions from earlier local checks are listed in `software_versions.tsv`; they are not a locked environment.
+The curation checks syntax, sample/data consistency and short numerical summaries. Full upstream VCF scans and demographic fitting were not rerun. The species-reference update reused completed 2,000-replicate feature bootstraps and 9,999-shift GEA comparisons; portable window summaries and Table S9 were checked directly against those completed results. Software versions from earlier local checks are listed in `software_versions.tsv`; they are not a locked environment.

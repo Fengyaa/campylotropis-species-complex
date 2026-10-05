@@ -15,5 +15,5 @@ while IFS= read -r sample || [[ -n "$sample" ]]; do
  gzip -dc "$out/$sample.raw.vcf.gz" | python "$converter" | gzip > "$out/$sample.fq.gz"
  "$psmc_dir/utils/fq2psmcfa" -q20 "$out/$sample.fq.gz" > "$out/$sample.psmcfa"
  "$psmc_dir/psmc" -N25 -t15 -r5 -p '4+25*2+4+6' -o "$out/$sample.psmc" "$out/$sample.psmcfa"
- perl "$psmc_dir/utils/psmc_plot.pl" -u 8.17e-8 -g 10 -R -p "$out/$sample" "$out/$sample.psmc"
+ perl "$psmc_dir/utils/psmc_plot.pl" -u 7e-9 -g 2 -R -p "$out/$sample" "$out/$sample.psmc"
 done < "$samples"

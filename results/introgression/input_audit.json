@@ -1,0 +1,39 @@
+{
+  "MY1_CYU_CPO": {
+    "input_rows": 197013,
+    "outside_positive_unit_interval": 98517,
+    "matched_positive_rows": 90307,
+    "unmatched_positive_rows": 8179,
+    "repeated_header_rows": 10,
+    "windows_with_positive_fd": 39150,
+    "sets_group_counts": {
+      "CPO": 85,
+      "Outgroup": 2,
+      "CYU": 44,
+      "MY1": 8
+    }
+  },
+  "CY32_CPO_CYU": {
+    "input_rows": 199997,
+    "outside_positive_unit_interval": 95768,
+    "matched_positive_rows": 95472,
+    "unmatched_positive_rows": 8747,
+    "repeated_header_rows": 10,
+    "windows_with_positive_fd": 41295,
+    "sets_group_counts": {
+      "CPO": 77,
+      "Outgroup": 2,
+      "CY32": 8,
+      "CYU": 52
+    }
+  },
+  "paired": {
+    "n": 30778,
+    "spearman": 0.1247578374147339,
+    "support_counts": {
+      "2": 30778,
+      "1": 18889,
+      "0": 5472
+    }
+  }
+}

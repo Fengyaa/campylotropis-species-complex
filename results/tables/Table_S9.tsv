@@ -1,0 +1,9 @@
+comparison	upper_tail_percent	ADP_binding_genes	also_in_putative_NBS_list	NBS_percent_of_ADP_genes	ADP_GO_enrichment_FDR
+fd_species	10.0	155	155	100.0	1.46936270157507e-36
+fd_species	5.0	98	98	100.0	2.36561108877568e-25
+fd_species	2.5	54	54	100.0	8.489891341956299e-13
+fd_species	1.0	15	15	100.0	0.3993658027439
+fd_sympatric	10.0	166	166	100.0	3.29947043823277e-45
+fd_sympatric	5.0	105	105	100.0	1.69803569726044e-29
+fd_sympatric	2.5	52	52	100.0	2.2203029980994898e-12
+fd_sympatric	1.0	23	23	100.0	3.69480939770406e-05

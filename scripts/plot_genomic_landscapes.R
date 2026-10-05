@@ -66,8 +66,8 @@ draw <- function(kind) {
   fields <- if(kind=='species')c('Fst_Cpo_Cyu','species_trio_fd_recomputed') else c('Mean_fst_sym','Mean_f_d_sym_2026')
   par(mar=c(0,0,0,0),family='Helvetica',xpd=NA)
   plot.new();plot.window(xlim=c(-13,123),ylim=c(-.2,13.3),xaxs='i',yaxs='i')
-  text(-12.2,13.03,if(kind=='species')'Species-level differentiation and introgression' else 'Sympatric differentiation and introgression',adj=0,cex=.9,font=2)
-  text(-12.2,12.73,if(kind=='species')'FST: Cpo-Cyu; fd: Cma-Cyu-Cpo trio | 10-kb summaries' else 'Mean sympatric FST and corrected mean fd | 10-kb summaries',adj=0,cex=.65,col='#53616B')
+  text(-12.2,13.03,if(kind=='species')'a  Species-level differentiation and allele sharing' else 'Sympatric differentiation and introgression',adj=0,cex=.9,font=2)
+  text(-12.2,12.73,if(kind=='species')'FST: Cpo-Cyu; fd: mean of MY1 and CY32 reference configurations' else 'Mean sympatric FST and corrected mean fd | 10-kb summaries',adj=0,cex=.65,col='#53616B')
   ticks <- seq(0,120,20)
   for(i in 1:11) {
     c <- paste0('HiC_scaffold',i);a <- d[chr==c];b <- bins[chr==c]

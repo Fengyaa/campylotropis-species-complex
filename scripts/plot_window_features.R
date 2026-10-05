@@ -60,68 +60,14 @@ pd <- ggplot(z,aes(threshold,term))+
  guides(fill=guide_colorbar(order=1,barwidth=unit(25,'mm'),barheight=unit(2,'mm'),title.position='top'),
  size=guide_legend(order=2,title.position='top'),shape=guide_legend(order=3,ncol=1))
 savefig <- function(p,stem,h){ggsave(file.path(here,paste0(stem,'.pdf')),p,width=190,height=h,units='mm',useDingbats=FALSE);ggsave(file.path(here,paste0(stem,'.png')),p,width=190,height=h,units='mm',dpi=260,bg='white')}
-savefig(pc,'Fig3c_species_sympatric_features',105)
-savefig(pd,'Fig3d_species_sympatric_GO',145)
-draw <- function(){grid.newpage();print(pc,vp=viewport(x=.5,y=.79,width=1,height=.42));print(pd,vp=viewport(x=.5,y=.29,width=1,height=.58))}
-pdf(file.path(here,'Fig3cd_revised.pdf'),width=190/25.4,height=250/25.4,useDingbats=FALSE);draw();dev.off()
-png(file.path(here,'Fig3cd_revised.png'),width=190,height=250,units='mm',res=260,type='cairo');draw();dev.off()
-# Manuscript-width compact layout.  Keep the full-size panels above for inspection.
-pc_compact <- ggplot(e,aes(threshold,mean_ratio,color=metric,group=metric))+
+
+# Publication panels b and c, with species panels preceding sympatric panels.
+e[,panel:=factor(paste(context,feature,sep=' | '),levels=as.vector(t(outer(c('Species','Sympatric'),c('Gene-body coverage','Repeat coverage','NBS genes per Mb'),paste,sep=' | '))))]
+pb <- ggplot(e,aes(threshold,mean_ratio,color=metric,group=metric))+
  geom_hline(yintercept=1,linetype='dashed',color='#9EAAB1',linewidth=.3)+
- geom_line(position=dodge,linewidth=.35)+
- geom_errorbar(aes(ymin=ratio_CI_low,ymax=ratio_CI_high),position=dodge,width=.11,linewidth=.3)+
- geom_point(position=dodge,size=1.2)+
- facet_grid(rows=vars(feature),cols=vars(context),scales='free_y')+
- scale_color_manual(values=cols,breaks=names(cols),labels=c('High FST','High fd'),name=NULL)+
- labs(title='c  Candidate-region features',x=NULL,y='Candidate / background')+style+
- theme(legend.position='none',plot.title=element_text(size=8.5),strip.text=element_text(size=6.5),
- strip.text.y=element_text(angle=0),axis.text=element_text(size=5.8),axis.title.y=element_text(size=6.5),
- panel.spacing=unit(1.2,'mm'),plot.margin=margin(2,2,0,2))
-pd_compact <- pd + labs(title='d  GO enrichment',subtitle=NULL,x=NULL)+
- scale_size_area(max_size=3.2,breaks=c(5,50,200),name='Hit genes')+
- theme(legend.position='none',plot.title=element_text(size=8.5),strip.text=element_text(size=6.5),
- axis.text.x=element_text(size=6),axis.text.y=element_text(size=5.7,lineheight=.85),
- panel.spacing=unit(1.2,'mm'),plot.margin=margin(0,2,2,2))
-draw_compact <- function(){
- grid.newpage()
- print(pc_compact,vp=viewport(x=.5,y=1-40/98/2,width=1,height=40/98))
- print(pd_compact,vp=viewport(x=.5,y=55/98/2,width=1,height=55/98))
-}
-pdf(file.path(here,'Fig3cd_compact_98mm.pdf'),width=190/25.4,height=98/25.4,useDingbats=FALSE);draw_compact();dev.off()
-png(file.path(here,'Fig3cd_compact_98mm.png'),width=190,height=98,units='mm',res=300,type='cairo');draw_compact();dev.off()
-# Alternative requested layout: all six feature panels in one horizontal row.
-e[,panel_one_row:=factor(paste(context,feature,sep=' | '),
- levels=as.vector(outer(c('Species','Sympatric'),c('Gene-body coverage','Repeat coverage','NBS genes per Mb'),paste,sep=' | ')),
- labels=c('Species · Gene','Sympatric · Gene','Species · Repeat','Sympatric · Repeat','Species · NBS','Sympatric · NBS'))]
-pc_one_row <- ggplot(e,aes(threshold,mean_ratio,color=metric,group=metric))+
- geom_hline(yintercept=1,linetype='dashed',color='#9EAAB1',linewidth=.3)+
- geom_line(position=dodge,linewidth=.35)+
- geom_errorbar(aes(ymin=ratio_CI_low,ymax=ratio_CI_high),position=dodge,width=.1,linewidth=.3)+
- geom_point(position=dodge,size=1.2)+
- facet_wrap(~panel_one_row,nrow=1,scales='free_y')+
- scale_color_manual(values=cols,breaks=names(cols),labels=c('High FST','High fd'),name=NULL)+
- labs(title='c',x=NULL,y='Candidate / background')+style+
- theme(legend.position='none',plot.title=element_text(size=8.5),strip.text=element_text(size=5.7),
- axis.text.x=element_text(size=5.3,angle=45,hjust=1),axis.text.y=element_text(size=5.2),
- axis.title.y=element_text(size=6.3),panel.spacing=unit(.8,'mm'),plot.margin=margin(2,2,0,2))
-draw_one_row <- function(){
- grid.newpage()
- print(pc_one_row,vp=viewport(x=.5,y=1-29/98/2,width=1,height=29/98))
- print(pd_compact,vp=viewport(x=.5,y=66/98/2,width=1,height=66/98))
-}
-pdf(file.path(here,'Fig3cd_6panels_one_row_98mm.pdf'),width=190/25.4,height=98/25.4,useDingbats=FALSE);draw_one_row();dev.off()
-png(file.path(here,'Fig3cd_6panels_one_row_98mm.png'),width=190,height=98,units='mm',res=300,type='cairo');draw_one_row();dev.off()
-pc_one_row_standalone <- pc_one_row+
- labs(title='c  Candidate-region features')+
- theme(legend.position='bottom',legend.direction='horizontal',legend.text=element_text(size=6.5),
- legend.key.width=unit(6,'mm'),legend.margin=margin(0,0,0,0),
- plot.margin=margin(2,2,1,2))
-ggsave(file.path(here,'Fig3c_6panels_one_row_180mm.pdf'),pc_one_row_standalone,
- width=180,height=46,units='mm',useDingbats=FALSE)
-ggsave(file.path(here,'Fig3c_6panels_one_row_180mm.png'),pc_one_row_standalone,
- width=180,height=46,units='mm',dpi=300,bg='white')
-ggsave(file.path(here,'Fig3c_6panels_one_row_170mm.pdf'),pc_one_row_standalone,
- width=170,height=46,units='mm',useDingbats=FALSE)
-ggsave(file.path(here,'Fig3c_6panels_one_row_170mm.png'),pc_one_row_standalone,
- width=170,height=46,units='mm',dpi=300,bg='white')
-cat('Displayed',nrow(t),'GO terms across both contexts.\n')
+ geom_line(position=dodge,linewidth=.35)+geom_errorbar(aes(ymin=ratio_CI_low,ymax=ratio_CI_high),position=dodge,width=.1,linewidth=.3)+geom_point(position=dodge,size=1.2)+
+ facet_wrap(~panel,nrow=1,scales='free_y',labeller=as_labeller(c('Species | Gene-body coverage'='Species\nGene coverage','Species | Repeat coverage'='Species\nRepeat coverage','Species | NBS genes per Mb'='Species\nNBS density','Sympatric | Gene-body coverage'='Sympatric\nGene coverage','Sympatric | Repeat coverage'='Sympatric\nRepeat coverage','Sympatric | NBS genes per Mb'='Sympatric\nNBS density')))+scale_color_manual(values=cols,labels=c('High FST','High fd'),name=NULL)+labs(title='b',x=NULL,y='Candidate / background')+style+
+ theme(plot.title=element_text(size=9),strip.text=element_text(size=5.6),axis.text.x=element_text(size=5.5,angle=45,hjust=1),axis.text.y=element_text(size=5.5),axis.title.y=element_text(size=6.5),panel.spacing=unit(1,'mm'),legend.text=element_text(size=7),plot.margin=margin(2,2,1,2))
+pgo <- pd+labs(title='c',subtitle=NULL,x=NULL)+theme(plot.title=element_text(size=9),axis.text.y=element_text(size=6.5),strip.text=element_text(size=7),legend.text=element_text(size=6.5))
+ggsave(file.path(here,'Figure_3b.pdf'),pb,width=180,height=49,units='mm',useDingbats=FALSE)
+ggsave(file.path(here,'Figure_3c.pdf'),pgo,width=180,height=max(70,40+nrow(t)*6),units='mm',useDingbats=FALSE)

@@ -10,7 +10,7 @@ Author confirmations on 5 October 2026 supersede the earlier archive notes.
 | Genomic pRDA | 257 individuals, conditioning on PC1–PC3; six constrained axes; final loading threshold 3.5 SD and absolute marginal correlation >0.5. |
 | BayPass | Association testing uses the full filtered genome-wide SNP dataset. This clarification does not independently identify the panel used to estimate the supplied covariance matrix. |
 | GEMMA | Relatedness and genetic PC covariates; no environmental fixed effects. GL uses 195 non-missing phenotypes and 3,469,695 tests. |
-| Dinvestigate | Author confirms 50 usable SNPs/25 step for both scales. The historical species source was named Cma_Cyu_Cpo_localFstats_100_50.txt; retained values are not altered or relabeled as a newly executed run. |
+| Dinvestigate | Final species configurations MY1–CYU–CPO and CY32–CPO–CYU, 50 usable SNPs/25 step; reference individuals excluded from their pooled group. Native estimates are summarized by start coordinate in 1-based inclusive 10-kb intervals, then available configuration means averaged equally. Previous Cma–Cyu–Cpo values are superseded; sympatric values unchanged. |
 | ADMIXTURE | structurePlot.R reads 257.snps.hardfiltered.maf01ms90thin1k.K.Q and writes the selected maf01ms09_re.pdf. Prepared with intergenic positions, MAF 0.01, max-missing 0.9 and thinning 1 kb. Alternative MAF panels omitted. |
 | SVDquartets | Fourfold-degenerate thin500 alignment; 259 positions; supplied population partitions; outgroups 131/244; 100 bootstrap replicates. SPECIES is the partition name for populations. |
 | PSMC | GATK 4.2.5.0 all-sites calls, original vcf2fq.py, fq2psmcfa -q20; -N25 -t15 -r5 -p 4+25*2+4+6. Supplied plot command uses μ=8.17e-8 and g=10. |
@@ -20,3 +20,5 @@ Author confirmations on 5 October 2026 supersede the earlier archive notes.
 No full demographic fitting, new VCF scan or rescaling of manuscript demographic dates was performed during this curation. Old differently calibrated PSMC plot exports were omitted. FSC input/model/likelihood summaries are retained without inventing missing optimization commands.
 
 The selected archive excludes DILS, SEM, balancing-selection exploration, old phenotype/RDA versions, other ADMIXTURE panels, alternate GEA cutoffs and the earlier overall reproduction framework. Large raw/genotype files and original conversion/configuration inputs are supplied externally where noted in the guide.
+
+The added methods, reference sensitivity, gene overlap results and independent commands are described in [SPECIES_FD_UPDATE.md](SPECIES_FD_UPDATE.md). The two native-output files and SETS are included, so downstream fd summarization needs no original VCF. The compatibility field `species_trio_fd_recomputed` stores the two-reference summary. Full GO families and unique hit IDs are retained for direct Table S9 export.
