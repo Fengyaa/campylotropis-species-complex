@@ -1,0 +1,2 @@
+trait	input_files	reported_tests	valid_tests	failed_tests	threshold_bonferroni	threshold_suggestive	significant_bonferroni	suggestive	zero_P
+GL	11	3469695	3469695	0	1.44104885299717e-08	2.88209770599433e-07	1556	2731	0

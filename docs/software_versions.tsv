@@ -1,0 +1,11 @@
+software	version
+R	4.4.1
+vegan	2.6.10
+data.table	1.17.0
+ggplot2	4.0.1
+clusterProfiler	4.14.6
+R.utils	2.13.0
+ape	5.8.1
+permute	0.9.7
+Python	3.13.5
+NumPy	2.3.2

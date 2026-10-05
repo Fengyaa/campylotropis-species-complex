@@ -1,0 +1,12 @@
+source	start	end	score	attributes
+Pfam	67	110	1.5E-13	"date=30-12-2021;Target=HiC_scaffold8.g33346.m1 67 110;ID=match$97724_67_110;signature_desc=Myb-like DNA-binding domain;Name=PF00249;status=T;Dbxref=""InterPro:IPR001005"""
+Pfam	14	61	3.4E-17	"date=30-12-2021;Target=HiC_scaffold8.g33346.m1 14 61;ID=match$97724_14_61;signature_desc=Myb-like DNA-binding domain;Name=PF00249;status=T;Dbxref=""InterPro:IPR001005"""
+PANTHER	1	299	2.3E-113	date=30-12-2021;Target=HiC_scaffold8.g33346.m1 1 299;ID=match$97725_1_299;Name=PTHR10641;status=T
+SMART	13	63	1.7E-14	"date=30-12-2021;Target=HiC_scaffold8.g33346.m1 13 63;ID=match$97726_13_63;Name=SM00717;status=T;Dbxref=""InterPro:IPR001005"""
+SMART	66	114	4.7E-15	"date=30-12-2021;Target=HiC_scaffold8.g33346.m1 66 114;ID=match$97726_66_114;Name=SM00717;status=T;Dbxref=""InterPro:IPR001005"""
+CDD	69	112	3.0224E-10	date=30-12-2021;Target=HiC_scaffold8.g33346.m1 69 112;ID=match$97727_69_112;signature_desc=SANT;Name=cd00167;status=T
+ProSiteProfiles	66	116	18.683	"date=30-12-2021;Target=HiC_scaffold8.g33346.m1 66 116;ID=match$97728_66_116;signature_desc=Myb-type HTH DNA-binding domain profile.;Name=PS51294;status=T;Dbxref=""InterPro:IPR017930"""
+SUPERFAMILY	11	108	5.99E-32	"date=30-12-2021;Target=HiC_scaffold8.g33346.m1 11 108;Ontology_term=""GO:0003677"";ID=match$97729_11_108;Name=SSF46689;status=T;Dbxref=""InterPro:IPR009057"""
+PANTHER	1	299	2.3E-113	date=30-12-2021;Target=HiC_scaffold8.g33346.m1 1 299;ID=match$97730_1_299;Name=PTHR10641:SF694;status=T
+ProSiteProfiles	9	65	25.988	"date=30-12-2021;Target=HiC_scaffold8.g33346.m1 9 65;ID=match$97731_9_65;signature_desc=Myb-type HTH DNA-binding domain profile.;Name=PS51294;status=T;Dbxref=""InterPro:IPR017930"""
+CDD	16	61	1.01717E-11	date=30-12-2021;Target=HiC_scaffold8.g33346.m1 16 61;ID=match$97732_16_61;signature_desc=SANT;Name=cd00167;status=T

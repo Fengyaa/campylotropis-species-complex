@@ -1,0 +1,3 @@
+position	genomic_change	CDS_position	CDS_change	protein_position	reference_codon	alternate_codon	reference_AA	alternate_AA	consequence
+47707485	G>A	863	C>T	288	ACA	ATA	T	I	missense
+47707606	A>G	742	T>C	248	TCA	CCA	S	P	missense

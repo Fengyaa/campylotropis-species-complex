@@ -1,0 +1,78 @@
+Command arguments:
+[1] "maf01ms90chr9.raw"          "all_indv_env.corrected.tsv"
+[3] "--pcs"                      "3"                         
+[5] "--id-column"                "IID"                       
+
+Model:
+gen ~ wc2.1_2.5m_srad_07 + bio10 + bio7 + bio15 + bio13 + bio3 + 
+    Condition(PC1 + PC2 + PC3)
+<environment: 0x564276f4c2d8>
+
+Samples: 257  SNPs: 1008593 
+Removed all-missing: 0  Constant: 0 
+Scanned constrained axes: 1 2 3 4 5 6 
+Axes are selected by count, not by a significance test.
+Candidate thresholds are loading SD cutoffs, not corrected P-values.
+Candidate correlations are marginal Pearson correlations, not PC-adjusted effects.
+
+R-squared:
+$r.squared
+[1] 0.09164492
+
+$adj.r.squared
+[1] 0.07260693
+
+
+VIF:
+               PC1                PC2                PC3 wc2.1_2.5m_srad_07 
+          7.171635           3.472564           2.435049           7.005560 
+             bio10               bio7              bio15              bio13 
+          2.692587          10.052986           5.766824           2.103060 
+              bio3 
+          6.528351 
+
+Constrained eigenvalues:
+    RDA1     RDA2     RDA3     RDA4     RDA5     RDA6 
+20999.96 19102.58 17259.72 13502.70 11079.29 10488.18 
+
+Axis explained variance (percent):
+percent_total: eigenvalue / total SNP inertia, before PC conditioning.
+percent_constrained: eigenvalue / sum of ALL constrained eigenvalues.
+With conditioning PCs, constrained inertia is the predictor contribution after PC adjustment.
+Total inertia: 1008593 
+Constrained inertia: 92432.428524 
+ axis eigenvalue percent_total percent_constrained
+ RDA1    21000.0       2.08210             22.7193
+ RDA2    19102.6       1.89398             20.6665
+ RDA3    17259.7       1.71127             18.6728
+ RDA4    13502.7       1.33877             14.6082
+ RDA5    11079.3       1.09849             11.9864
+ RDA6    10488.2       1.03988             11.3469
+First 2 constrained axes combined (%):
+      percent_total percent_constrained 
+            3.97609            43.38579 
+
+Elapsed seconds: 664.206 
+
+Session:
+R version 4.4.2 (2024-10-31)
+Platform: x86_64-conda-linux-gnu
+Running under: CentOS Linux 7 (Core)
+
+Matrix products: default
+BLAS/LAPACK: /home/xubo/Software/miniconda3/envs/r4-base/lib/libopenblasp-r0.3.28.so;  LAPACK version 3.12.0
+
+locale:
+[1] C
+
+time zone: Asia/Shanghai
+tzcode source: system (glibc)
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+loaded via a namespace (and not attached):
+ [1] MASS_7.3-65       compiler_4.4.2    Matrix_1.7-4      parallel_4.4.2   
+ [5] mgcv_1.9-4        splines_4.4.2     nlme_3.1-171      grid_4.4.2       
+ [9] data.table_1.17.8 permute_0.9-10    vegan_2.7-6       cluster_2.1.8.3  
+[13] lattice_0.22-7   

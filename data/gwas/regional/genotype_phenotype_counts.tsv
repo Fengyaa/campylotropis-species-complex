@@ -1,0 +1,10 @@
+scaffold	GL	GT	n	quality_pass	DP_median	GQ_median	ALT_fraction_median
+HiC_scaffold6	0.0	0/0	3	2	44.0	27.0	0.0
+HiC_scaffold6	0.0	0/1	39	39	66.0	99.0	0.4230769230769231
+HiC_scaffold6	1.0	./.	2	0	8.5	0.0	0.0
+HiC_scaffold6	1.0	0/0	151	127	26.0	57.0	0.0
+HiC_scaffold6	NA	0/0	15	15	50.0	99.0	0.0
+HiC_scaffold8	0.0	0/0	4	4	28.0	69.0	0.0
+HiC_scaffold8	0.0	0/1	38	38	64.0	99.0	0.47061191626409016
+HiC_scaffold8	1.0	0/0	153	153	43.0	99.0	0.0
+HiC_scaffold8	NA	0/0	15	14	130.0	99.0	0.0

@@ -1,0 +1,23 @@
+# Paths are relative to this archive, independent of the caller's working directory.
+.script <- sub('^--file=', '', commandArgs(FALSE)[grepl('^--file=', commandArgs(FALSE))])
+root <- normalizePath(file.path(dirname(.script), '..'))
+setwd(root)
+out <- 'results/candidate';dir.create(out,recursive=TRUE,showWarnings=FALSE)
+draw <- function() {
+par(mar=c(5,2,3,2))
+plot(NA,xlim=c(0,320),ylim=c(0,3),axes=FALSE,xlab='Amino acid position',ylab='')
+title('HiC_scaffold8.g33346.m1 | 311 amino acids',adj=0)
+segments(1,1.4,311,1.4,lwd=7,col='#CBD5E1')
+rect(14,1.12,61,1.68,col='#247A9C',border=NA)
+rect(67,1.12,110,1.68,col='#429D89',border=NA)
+text(c(37.5,88.5),1.4,c('MYB 1','MYB 2'),col='white',cex=.9)
+text(c(37.5,88.5),.85,c('14–61','67–110'),cex=.85)
+segments(c(248,288),1.4,c(248,288),c(2.05,2.5),col='#B74638',lwd=2)
+points(c(248,288),c(1.4,1.4),pch=21,bg='#B74638',col='white',cex=1.4)
+text(248,2.2,'S248P',col='#B74638',cex=1)
+text(288,2.66,'T288I',col='#B74638',cex=1)
+axis(1,at=c(1,50,100,150,200,250,311))
+mtext('Boxes: existing Pfam PF00249 annotations; positions are 1-based.',side=1,line=4.1,cex=.8)
+}
+pdf(file.path(out,'MYB_domains_variants.pdf'),width=9,height=3.7);draw();dev.off()
+png(file.path(out,'MYB_domains_variants.png'),width=1800,height=740,res=200);draw();dev.off()
