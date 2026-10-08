@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Template with author-confirmed 50 usable-SNP windows and step 25 at both scales.
+# Dsuite command template: 50 usable SNPs per window and a 25-SNP step.
 set -euo pipefail
 [[ $# -eq 5 ]] || { echo "Usage: $0 INPUT.vcf.gz SETS.txt ROOTED_TREE.nwk TRIOS.tsv OUTDIR" >&2; exit 2; }
 absolute() { printf '%s/%s\n' "$(cd "$(dirname "$1")" && pwd)" "$(basename "$1")"; }

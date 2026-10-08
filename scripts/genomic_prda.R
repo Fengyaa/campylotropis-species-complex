@@ -173,7 +173,7 @@ main <- function(args) {
     cand$predictor <- predictors[best]
     cand$correlation <- if (nrow(cand)) abs(cc[cbind(seq_len(nrow(cand)), best)]) else numeric()
     path <- paste0(prefix, 'rdaz', sprintf('%.1f', thresholds[k]), '.txt')
-    # Keep the legacy row-number column for downstream compatibility.
+    # Include the row-number column required by downstream readers.
     if (fast_io) data.table::fwrite(cand, path, sep='\t', quote=FALSE, row.names=TRUE) else {
       write.table(cand, path, quote=FALSE, sep='\t', row.names=TRUE)
     }

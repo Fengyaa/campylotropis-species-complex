@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Auxiliary-model template, not a recovered historical execution log.
+# BayPass auxiliary-model command template.
 # GENOTYPE_COUNTS must contain ALL final filtered genome-wide SNPs, not the structure panel.
 set -euo pipefail
 [[ $# -eq 5 ]] || { echo "Usage: $0 ALL_SNP_COUNTS CLIMATE_PC_MATRIX OMEGA NPOP OUTDIR" >&2; exit 2; }

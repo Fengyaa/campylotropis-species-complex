@@ -1,24 +1,28 @@
-# Final settings and provenance
+# Analysis methods and parameters
 
-Author confirmations on 5 October 2026 supersede the earlier archive notes.
-
-| Topic | Final description |
+| Analysis | Description |
 |---|---|
-| Climate | Morphology RDA and genomic pRDA share bio3, bio7, bio10, **bio13**, bio15 and July solar radiation. The proposed bio12 change was explicitly corrected to bio13 by the author. |
-| Climate sources | 19 WorldClim 1.4 bioclimatic variables plus 36 WorldClim 2.1 monthly solar/wind/vapor variables, 2.5 arc-minute resolution. Shared population/individual values are preserved. |
-| Morphology | 192 complete individuals selected from the 195 GL-GWAS cohort; eight traits and 28 populations. R² and adjusted R² are separately reported. |
-| Genomic pRDA | 257 individuals, conditioning on PC1–PC3; six constrained axes; final loading threshold 3.5 SD and absolute marginal correlation >0.5. |
-| BayPass | Association testing uses the full filtered genome-wide SNP dataset. This clarification does not independently identify the panel used to estimate the supplied covariance matrix. |
-| GEMMA | Relatedness and genetic PC covariates; no environmental fixed effects. GL uses 195 non-missing phenotypes and 3,469,695 tests. |
-| Dinvestigate | Final species configurations MY1–CYU–CPO and CY32–CPO–CYU, 50 usable SNPs/25 step; reference individuals excluded from their pooled group. Native estimates are summarized by start coordinate in 1-based inclusive 10-kb intervals, then available configuration means averaged equally. Previous Cma–Cyu–Cpo values are superseded; sympatric values unchanged. |
-| ADMIXTURE | structurePlot.R reads 257.snps.hardfiltered.maf01ms90thin1k.K.Q and writes the selected maf01ms09_re.pdf. Prepared with intergenic positions, MAF 0.01, max-missing 0.9 and thinning 1 kb. Alternative MAF panels omitted. |
-| SVDquartets | Fourfold-degenerate thin500 alignment; 259 positions; supplied population partitions; outgroups 131/244; 100 bootstrap replicates. SPECIES is the partition name for populations. |
-| PSMC | GATK 4.2.5.0 all-sites calls, original vcf2fq.py, fq2psmcfa -q20; -N25 -t15 -r5 -p 4+25*2+4+6. Supplied plot command uses μ=8.17e-8 and g=10. |
-| Gene overlap | At least 1 bp of the full annotated gene span, including introns/exons; distinct genes within each GO candidate set. Overlapping intervals are merged for coverage. |
-| Window comparisons | Four upper-tail cutoffs: 10%, 5%, 2.5%, 1%; eligible sites >=100; finite values; 0<fd<1. Final GEA comparisons retain the 22-statistic BH family, 9,999 shifts and 1,000 bootstrap replicates. |
+| Climatic predictors | Morphological RDA and genomic pRDA use bio3, bio7, bio10, bio13, bio15 and July solar radiation (srad_07). |
+| Climate sources | 19 WorldClim v1.4 bioclimatic variables and 36 WorldClim v2.1 monthly solar radiation, wind speed and water vapor pressure variables, at 2.5-arc-minute resolution. |
+| Morphology | Eight traits in 192 individuals with complete measurements from 28 populations, drawn from the 195-individual glandular-hair GWAS cohort. R² and adjusted R² are reported separately. |
+| Genomic pRDA | 257 individuals; genetic PC1–PC3 conditioning; six constrained axes; candidate loading threshold 3.5 standard deviations and absolute marginal genotype–environment correlation >0.5. |
+| BayPass | Climatic association testing across filtered genome-wide SNPs, using a population covariance matrix estimated from 204,672 intergenic SNPs thinned to a minimum spacing of 1 kb. Candidates require BF >20 decibans and per-covariate upper-tail rank probability <0.001. |
+| GEMMA | Genomic relatedness and genetic PC1–PC3 covariates. The glandular-hair analysis includes 195 individuals and 3,469,695 SNP tests. |
+| Dinvestigate | MY1–CYU–CPO and CY32–CPO–CYU configurations; 50 usable SNPs per window and a 25-SNP step; reference individuals excluded from their respective pooled groups. Native estimates are assigned by start coordinate to 1-based inclusive 10-kb intervals; available configuration means are averaged equally. |
+| ADMIXTURE | Intergenic SNPs with MAF ≥0.01, call rate ≥0.90 and minimum spacing 1 kb. Q matrices are named `257.snps.hardfiltered.maf01ms90thin1k.K.Q`; the ancestry plot is `maf01ms09_re.pdf`. |
+| SVDquartets | Fourfold-degenerate SNPs thinned to a minimum spacing of 500 bp; 259 taxa; outgroups at positions 131 and 244; 100 bootstrap replicates. The `SPECIES` partition defines populations. |
+| PSMC | GATK all-sites calls → vcf2fq.py → fq2psmcfa -q20; PSMC parameters `-N25 -t15 -r5 -p '4+25*2+4+6'`. Plotting uses μ = 7 × 10⁻⁹ per site per generation and a generation time of 2 years. |
+| Gene overlap | At least 1 bp overlap with the full annotated gene span, including exons and introns; each gene counted once per GO candidate set. Annotation intervals are merged before calculating coverage. |
+| Window comparisons | Upper-tail cutoffs of 10%, 5%, 2.5% and 1%; genomic-statistic windows require ≥100 analyzed sites and finite values. Local fd summaries retain 0 < fd < 1. GEA comparisons use a 22-statistic BH correction family, 9,999 spatial shifts and 1,000 block-bootstrap replicates. |
 
-No full demographic fitting, new VCF scan or rescaling of manuscript demographic dates was performed during this curation. Old differently calibrated PSMC plot exports were omitted. FSC input/model/likelihood summaries are retained without inventing missing optimization commands.
+## Genomic annotations and enrichment
 
-The selected archive excludes DILS, SEM, balancing-selection exploration, old phenotype/RDA versions, other ADMIXTURE panels, alternate GEA cutoffs and the earlier overall reproduction framework. Large raw/genotype files and original conversion/configuration inputs are supplied externally where noted in the guide.
+Gene-body and repeat coverage are measured as the fraction of each window covered by the respective annotation. NBS density is expressed as the number of distinct overlapping putative NBS genes per megabase. Candidate-to-background ratios are evaluated with chromosome-stratified block bootstrapping.
 
-The added methods, reference sensitivity, gene overlap results and independent commands are described in [SPECIES_FD_UPDATE.md](SPECIES_FD_UPDATE.md). The two native-output files and SETS are included, so downstream fd summarization needs no original VCF. The compatibility field `species_trio_fd_recomputed` stores the two-reference summary. Full GO families and unique hit IDs are retained for direct Table S9 export.
+GO enrichment uses one-sided hypergeometric tests. The reference universe comprises GO-annotated genes overlapping any eligible window in the corresponding comparison. Terms represented by 10–500 genes are tested, including zero-hit terms in the Benjamini–Hochberg correction. Full test tables and gene-hit IDs are included for Table S9 export.
+
+## Inputs and interpretation
+
+The repository contains processed inputs and selected results. Large genotype files and upstream tools are external; command scripts document their required arguments. Demographic model templates, parameter definitions, likelihood summaries and bootstrap summaries are included in `data/demography/fsc/`.
+
+[Introgression analyses](INTROGRESSION.md) describes the species-reference summaries and their component fields. Local fd characterizes allele sharing and does not by itself determine the evolutionary origin of variation at an individual locus.

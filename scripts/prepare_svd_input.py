@@ -1,5 +1,5 @@
 """Usage: python scripts/prepare_svd_input.py input.nex output.nex
-Number a sequential 259-taxon NEXUS alignment; append author-supplied partitions.
+Number a sequential 259-taxon NEXUS alignment; append population partitions.
 Requires the ORIGINAL taxon order; inspect the exported name/number map before PAUP.
 """
 import re,sys

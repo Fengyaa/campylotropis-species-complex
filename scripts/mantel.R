@@ -15,7 +15,7 @@ stopifnot(identical(ids,colnames(fst)),isSymmetric(fst),all(is.finite(fst)),all(
 linear <- fst/(1-fst)
 diag(linear) <- 0
 write.csv(linear,file.path(out,'fst_matrix_linearized.csv'),quote=FALSE)
-# The old distance files have numerical row labels. Recover population labels
+# Distance files have numerical row labels. Recover population labels
 # from their original 33-population ordering, independently checked below.
 coords <- read.delim(file.path(base,'pop_coord.txt'),check.names=FALSE)
 canonical <- function(x) gsub('-','',x,fixed=TRUE)

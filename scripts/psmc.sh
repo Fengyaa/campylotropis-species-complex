@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Cleaned from demographic_history/call.sh supplied by the author.
-# Original vcf2fq.py remains an external dependency; no substitute converter is assumed.
+# Infer PSMC trajectories from per-individual gVCFs.
+# Requires an external compatible vcf2fq.py converter.
 # Usage: bash scripts/psmc.sh SAMPLE_LIST REF.fa GVCF_DIR VCF2FQ.py PSMC_DIR OUTDIR
 set -euo pipefail
 [[ $# -eq 6 ]] || { echo "Usage: $0 SAMPLE_LIST REF.fa GVCF_DIR VCF2FQ.py PSMC_DIR OUTDIR" >&2; exit 2; }

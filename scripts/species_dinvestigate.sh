@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Optional upstream rerun; processed 50/25 outputs are already bundled.
+# Run species-reference Dinvestigate analyses with 50-SNP windows and a 25-SNP step.
 set -euo pipefail
 [[ $# -eq 2 ]] || { echo "Usage: $0 INPUT.vcf.gz NEW_OUTDIR" >&2; exit 2; }
 root=$(cd "$(dirname "$0")/.." && pwd)

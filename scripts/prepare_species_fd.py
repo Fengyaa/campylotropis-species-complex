@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Summarize supplied reference-based Dsuite estimates; no VCF rerun required."""
+"""Summarize reference-based Dsuite estimates on a 10-kb genomic grid."""
 import bisect
 import csv
 import gzip

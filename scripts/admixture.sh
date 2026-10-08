@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Cleaned author commands; final MAF 0.01, call rate 0.90, intergenic, 1-kb spacing.
+# ADMIXTURE: MAF 0.01, call rate 0.90, intergenic SNPs, 1-kb spacing.
 # Usage: bash scripts/admixture.sh INPUT.vcf.gz INTERGENIC.pos OUTDIR
 set -euo pipefail
 [[ $# -eq 3 ]] || { echo "Usage: $0 INPUT.vcf.gz INTERGENIC.pos OUTDIR" >&2; exit 2; }
